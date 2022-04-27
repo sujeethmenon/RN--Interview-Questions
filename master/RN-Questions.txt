@@ -1,0 +1,269 @@
+ 				React Native Advanced Concepts
+
+1.	What is JWT : JSON Web Tokens  used for securely transmission of data from two parties . The JWT tokens are Base64URL encoded- consist of 
+•	Header
+•	Payload 
+•	Signature 
+Looks like header.payload.signature
+1.	Header:  Consist of two parts 
+•	Signing Algorithm  
+•	Type of token 
+2.	Payload:  Consists of claims. Claims  are entry of statement and additional data. 3 Types
+•	Registered 
+•	Public	
+•	Private 
+Registered Claims : Consists of issue (iss),expiry time (exp), subject(sub),audience (aud)
+Public Claims: Used to avoid collisions. 
+Private Claims : used to transfer the data between two parties 
+3.	Signature :  Used to verify that the data is not changed along the way. 
+ jwt.io Debugger is JWT debugger
+
+
+2.	Authentication vs Authorization
+•	Authentication: Process of confirming the identity of user or device 
+•	Authorization: Process of verifying the user or device can access or what actions they can perform
+
+ OAuth 2.0 for authorization and OIDC for authentication.
+OAuth stands for Open Authorization and its uses Access Tokens for verification.
+Access Tokens is used to allow an application to access an API 
+
+3.	Which design pattern is used in React Native ? – Container -View Pattern -  where container holds the stateful logic and View hold the presentation part. 
+  Three used design pattern in react native component are 
+
+•	Container -View pattern 
+•	Provider Pattern –  Makes the state values to access at any components. Prop drilling . This allows us to store data in one location.
+•	
+4.	What is progaurd in Android? 
+It’s a tool helps to 
+      	Code Shrinking – Will remove unused class or images 
+Obfuscation  -  shortness the name of class which helps in reduced DEX files 
+		To enable open build.gradlew 
+				Add minifyEnabled = true, ShrinkResources=true
+5.	When to use the Class Component and the Functional Component??
+Class components will render whenever the state of the application changes and Functional component will render when the props changes 
+
+6.	Advantage of react hooks? 
+Reusability, testability, readability 
+
+7.	What is the use of ref?
+Helps to give access to DOM elements 
+
+8.	Finally is executed after execution of try catch block. Any exception thrown or not but finally block code will be executed. 
+9.	Promises : will waits for completion of asynchronous task with the result true or false.
+10.	Promise and Callback: Callback is a called inside a function which may or may not execute asynchronously 
+Promise : Promise called a callback function and waits for the process to complete with the results.
+
+11.	Interaction Manager : InteractionManager allows long-running work to be scheduled after any interactions/animations have completed. In particular, this allows JavaScript animations to run smoothly.
+12.	What is AppRegistry ?  This is the entry point of the react-native application. Appregistry should be registered registerComponent then only the native system can load the javascript bundle. 
+13.	What is bind? – Used to pass the data as argument to function of a class components.I takes two parameters this is used for binding and second parameters is used to pass the arguments. 
+14.	React Native Architecture ? – Consist of three layers 
+i.	JavaScript Thread : This is where all javascript is bundled together.
+ii.	Native Thread: This is where the native code is executed and ensures seamless communication is maintained. 
+iii.	Shadow Thread : Layout of the application is calculated . 
+15.	Pure vs React Components: Pure components handles componentShouldUpdate lifecycle by default by doing shallow comparisons. This is will works only for Strings or number or Boolean and not for array or objects.
+16.	Shallow Copy Vs Deep Copy : 
+Shallow copy is used to copy the object to another and refers to same object in the memory 
+Deep Copy : makes a copy of all the members of the old object, allocates separate memory location for the new object and then assigns the copied members to the new object.
+17.	What is middleware ? Used to make asynchronous request,error handling 
+18.	Redux – saga : takeEvery/takeLatest 
+   		takeEvery: Executes all action at the same time.
+		takeLatest : Will executes only the lasts action.if there is any current actions running it will be terminated automatically.
+19.	Code of Curry : if we have multiple parameters for the function and the parameters are nested down sequential with single parameters
+Example :
+	Function sum(a) {
+			Returm function(b) {
+				Return function(c) {
+					Return a+b+c;
+				}
+}
+}
+sum(1)(2)(3)
+
+20.	What is useCallback()-> it return memoized call back function . and will be called only one of its dependency’s changes.
+21.	What is useMemo()->return momozed value and will be called only when the dependency changes .
+22.	useEffect with class component  lifecycle:
+a.	compinentDidMount()
+useEffect(()=>{
+// no square brackets 
+});
+b.	componentDidUpdate()  
+  useEffect(()=>{
+// square brackets  with dependency 
+},[dependency]);
+
+c.	Componentwillunmount()
+useEffect(()=>{
+return a call back function
+},[]);
+
+
+
+
+
+
+
+23.	What is Closure and why we use. A function which can access inner scope of variable from outside the function. It is used for data privacy. 
+Example : 
+function init() {
+  var name = 'Mozilla'; // name is a local variable created by init
+  function displayName() { // displayName() is the inner function, a closure
+    alert(name); // use variable declared in the parent function
+  }
+  displayName();
+}
+init();
+
+24.	Name of Primitive data type: String,number,bigint,Boolean,null,undefined.
+25.	Difference between === and ==? = “===” assigement operator which will check the datatype of the condition and “==” check the condition irrespective of datatype.
+26.	UseLayoutEffect? -Modifies the DOM first and then shows the ouput in screen .
+27.	What is State management ? Used to manage the data across our app. We use Redux for global state management and useState for local state management. 
+28.	How to handle crash in whole application? In react native we use react-native-exception-handler.
+29.	Memory leaks and how can it be avoided: Memory leaks are memory allocated on heap should always be freed when no longer needed. 
+•	To check memory leak in android, go to Android studio and open profiler tab and select memory.
+•	To check in iOS, go to Debug Navigator and select memory.
+30.	Rest Parameter & Spread Parameters :
+	 Rest – allows us to call a function with any number of parameters and access those parameters as an array.
+    Spread – Allow us to expand the iterate like and array into its individuals.
+31.	mapStateToProps & mapDispatchToProps :
+      mapStateToProps: used to store the data into your components.It connects redux state to props
+      mapDispatchToProps : is action creators which dispatch the function. It connects redux action to props 
+32.	ES6 Features ? 1. Let & const 2. Arrow Function 3. Object Literals 4. Multi-line strings 5. Classes 6. Promises 7. Modules 8. Destructing of array & objects.
+33.	How to implement themes in react-native ? -  Using react navigation 
+     To implement use useColorScheme from react-native and use Darktheme,default-theme and navigationContainer . Now Pass theme as props.
+	Const scheme = useColorScheme
+<NavigationContainer theme={scheme == ‘dark’ ?DarkTheme:DefaultTheme} />
+
+34.	What is Babel? It’s a transpiler -> React Native uses Babel to convert react syntax & ES5 features to into code that can be run in javascript environment. 
+35.	What is Metro ? . It’s a development platform for react native . This acts as a javascript bundler , manages the assets,caches and perform hot reloading. 
+
+
+
+
+
+
+
+
+GIT Commands.
+
+GIT : Git is a version control tool ,track the changes.
+
+git –version : to get the version of git 
+git status : Will allow us to see tracked and untracked files .
+git checkout branch : will allow us to navigate between the branches
+git merge : used to merge two branches.
+Git log: used to get the log of last changes or commit made.
+Git switch: used to switch between branches and also create new branch – git switch -c new-branch
+ Stash : used to get the unsaved changes
+Git stash apply :  temporary  storage for un staged and uncommitted changes 
+Git stash list : list all unsaved changes .
+Git stash clear: will clear all the unsaved changes .
+Git reset –hard HEAD~2: indicates to reset to second commit .
+Git reflog – A log of all projects changes made including the deleted commits.
+Git rebase – changes the base with new commit id . history will not be maintained.
+Git cherry-pick - Cherry picking in Git means to choose a commit from one branch and apply it onto another.
+
+GIT hub – Git hub is  cloud collaboration – used to combine the local repository to remote repository 
+
+•	To add a remote repository : git remote add origin URL
+•	Git push – to push the code from local to remote repository 
+•	Git Pull – to get the code form remote to local repository 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				JavaScript Program sample 
+1.	Check number is prime or not. => logic( integer should be divisible only by 1)
+2.	const checkPrime = (num)=>{
+3.	for (let i=2;i<=num;i++)
+4.	{
+5.	  if(num % i == 0){
+6.	  console.log("Not prime")
+7.	    break;
+8.	  }else{
+9.	  console.log(" prime")
+10.	     break;
+11.	  }
+12.	}
+13.	}
+14.	
+Fibonacci series. If first two term are 0 1 den next will be sum of firsttwo.
+15.	const check_Fibo =(num)=>{
+16.	let n1=0,n2=1,nextnum;
+17.	console.log('Fibonacci Series:');
+18.	
+19.	for (let i = 1; i <= num; i++) {
+20.	    console.log(n1);
+21.	    nextTerm = n1 + n2;
+22.	    n1 = n2;
+23.	    n2 = nextTerm;
+24.	}
+25.	
+26.	}
+27.	console.log(check_Fibo(4))
+Palindrome -> same name if its reverse written eg madam
+28.	const check_palindrome = (str)=>{
+29.	  let newstr = str.split("").reverse().join("")
+30.	  console.log(newstr)
+31.	if(str == newstr){
+32.	  console.log("Palindrome")
+33.	}else{console.log("Not Palindrome")}
+34.	}
+35.	console.log(check_palindrome("madam"))
+
+
+From an array remove duplicates : 
+const arr = [1,2,3,1,2,3,4,5,5]
+const newArr = arr.filter((id,index)=>{
+  return arr.indexOf(id)== index;
+})
+console.log(newArr)
+
+
+
+Add N number – to achieve this we use rest operator and then we use reduce function to add the number.
+const addNnumb = (...arr)=>{
+  return arr.reduce((acc,current)=>{
+    //console.log(acc)
+    return acc+current;
+  })
+}
+console.log(addNnumb(1,2,4,3))
+
+
+To find Maximum and Minimum from an array 
+const arr1 = [1,2,3,1,2,3,4,5,5]
+console.log(Math.max(...arr1))// maximun in an array
+console.log(Math.min(...arr1))// minimum in an array 
+ 	Also We can use reduce method 
+const arr = [1,2,3,1,2,3,4,5,5,88,22]
+const newArr =arr.reduce((a,b)=>{
+ return  Math.max(a,b)
+})
+console.log(newArr)
+
+To remove an item from array or string 
+let str= "Menon"
+let newStr = [...str]
+let index = newStr.indexOf("n")
+let output = newStr.splice(index,1)
+console.log(newStr)
+
+
+To replace first letter with last letter 
+let input= "sujeeth"
+ var inputCopy = [...input];
+    var [first, last] = [inputCopy.splice(0,1), inputCopy.splice(-1)];
+    console.log(  [...last, ...inputCopy, ...first])
+
